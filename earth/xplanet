@@ -1,0 +1,4 @@
+[earth]
+image=./day.png
+night_map=./night.png
+twilight=3
