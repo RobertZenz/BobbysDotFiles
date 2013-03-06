@@ -1,0 +1,10 @@
+TEXT
+${offset 7}${color #fce94f}██fce94f ${color #edd400}██edd400 ${color #c4a000}██c4a000
+${offset 7}${color #fcaf3e}██fcaf3e ${color #f57900}██f57900 ${color #ce5c00}██ce5c00
+${offset 7}${color #e9b96e}██e9b96e ${color #c17d11}██c17d11 ${color #8f5902}██8f5902
+${offset 7}${color #8ae234}██8ae234 ${color #73d216}██73d216 ${color #4e9a06}██4e9a06
+${offset 7}${color #729fcf}██729fcf ${color #3465a4}██3465a4 ${color #204a87}██204a87
+${offset 7}${color #ad7fa8}██ad7fa8 ${color #75507b}██75507b ${color #5c3566}██5c3566
+${offset 7}${color #ef2929}██ef2929 ${color #cc0000}██cc0000 ${color #a40000}██a40000
+${offset 7}${color #eeeeec}██eeeeec ${color #d3d7cf}██d3d7cf ${color #babdb6}██babdb6
+${offset 7}${color #888a85}██888a85 ${color #555753}██555753 ${color #2e3436}██${color #eeeeec}2e3436 
