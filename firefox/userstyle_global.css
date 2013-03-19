@@ -1,0 +1,14 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+/*
+ * Allow arbitrary resizing of textareas and also make them monospaced.
+ */
+textarea {
+    font-family: DejaVu Sans Mono !important;
+    font-size: 11px !important;
+    max-height: 999999px !important;
+    max-width: 999999px !important;
+    min-height: 0px !important;
+    min-width: 0px !important;
+    resize: both !important;
+}
