@@ -2,25 +2,25 @@
 
 
 function eerror() {
-	echo -e $TC_RED$1$TC_RESET
+	echo -e $TC_RED$@$T_RESET
 }
 
 function efail() {
-	echo -e $TC_RED$1$TC_RESET
+	echo -e $TC_RED$@$T_RESET
 }
 
 function emessage() {
-	echo -e $TC_BLUE$1$TC_RESET
+	echo -e $TC_BLUE$@$T_RESET
 }
 
 function eprogress() {
-	echo -e $TC_BLUE$1$TC_RESET
+	echo -e $TC_BLUE$@$T_RESET
 }
 
 function esuccess() {
-	echo -e $TC_GREEN$1$TC_RESET
+	echo -e $TC_GREEN$@$T_RESET
 }
 
 function ewarning() {
-	echo -e $TC_ORANGE$1$TC_RESET
+	echo -e $TC_YELLOW$@$T_RESET
 }
