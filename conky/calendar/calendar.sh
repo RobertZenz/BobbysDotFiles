@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Public Domain
+# Public Domain or CC0
 # This script is so dead simple that every try to put
 # it under copyright or a license would be a violation
 # against humanity.
@@ -14,5 +14,6 @@
 #
 # ${execp ./calendar.sh ffffff}
 
+today=$(date +%_d)
 
-cal -h | sed "s/ `date +%_d` / \$\{color #$1\}`date +%_d`\$\{color\} /g"
+cal -h | sed "s/${today}/\$\{color #$1\}${today}\$\{color\}/g"
