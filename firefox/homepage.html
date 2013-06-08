@@ -1,0 +1,124 @@
+<html>
+
+<head>
+	<title>Homepage</title>
+	
+	<script type="text/javascript" src="prototype.js"></script>
+	<script type="text/javascript">
+		function Plugin(name, startsWith, target) {
+			"use strict";
+			
+			this.name = name;
+			this.startsWith = startsWith;
+			this.target = target;
+						
+			/**
+			 * Check if this plugin can be used fo the given query.
+			 */
+			this.fits = function(query) {
+				"use strict";
+				
+				return this.getFitting(query);
+			}
+			
+			/**
+			 * Returns the fitting startsWith-Filter.
+			 */
+			this.getFitting = function(query) {
+				if(this.startsWith instanceof Array) {
+					for(var idx = 0; idx < this.startsWith.length; idx++) {
+						if (query.indexOf(this.startsWith[idx]) >= 0) {
+							return this.startsWith[idx];
+						}
+					}
+				} else {
+					if (query.indexOf(this.startsWith) >= 0) {
+						return this.startsWith;
+					}
+				}
+				
+				return false;
+			}
+			
+			/**
+			 * Returns the target with the given query.
+			 */
+			this.getTarget = function(query) {
+				"use strict";
+				
+				return this.target.replace("$query", query.substring(this.getFitting(query).length));
+			}
+		}
+		
+		var plugins = new Array(
+			new Plugin("Mozilla Developer Network",
+				new Array("js ", "mdn "),
+				"https://developer.mozilla.org/en-US/search?q=$query"),
+			new Plugin("Google",
+				new Array("", "g "),
+				"https://www.google.com/search?q=$query")
+		);
+
+		/**
+		 * Returns the fitting plugin.
+		 */
+		function getPlugin(query) {
+			"use strict";
+			
+			for(var idx = 0; idx < plugins.length; idx++) {
+				var plugin = plugins[idx];
+				if(plugin.fits(query)) {
+					return plugin;
+				}
+			}
+		}
+
+		/**
+		 * Sets the given plugin.
+		 */
+		function setPlugin(plugin) {
+			"use strict";
+			
+			$("text").update(plugin.name);
+		}
+		
+		/**
+		 * Updates everything.
+		 */
+		function update() {
+			"use strict";
+
+			setPlugin(getPlugin($F("query")));
+		}
+		
+		/**
+		 * Submits the search.
+		 */
+		function submit() {
+			"use strict";
+			
+			window.location = getPlugin($F("query")).getTarget($F("query"));
+		}
+
+
+		document.observe("dom:loaded", function() {
+			"use strict";
+			
+			update();
+			
+			$("query").observe("keyup", update);
+			$("mainForm").observe("submit", submit);
+			$("query").focus();
+		});
+	</script>
+</head>
+
+<body>
+	<form id="mainForm" action="javascript:void(0)">
+		<input type="text" id="query" class="centered">
+	</form>
+	<div id="text"></div>
+	<div id="logo"></div>
+</body>
+
+</html>
