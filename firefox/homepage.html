@@ -13,12 +13,12 @@
 			this.target = target;
 						
 			/**
-			 * Check if this plugin can be used fo the given query.
+			 * Check if this provider can be used for the given query.
 			 */
 			this.fits = function(query) {
 				"use strict";
 				
-				return this.getFitting(query);
+				return this.getFitting(query) !== false;
 			}
 			
 			/**
@@ -60,26 +60,28 @@
 		);
 
 		/**
-		 * Returns the fitting plugin.
+		 * Returns the fitting provider.
 		 */
 		function getProvider(query) {
 			"use strict";
 			
-			for(var idx = 0; idx < plugins.length; idx++) {
-				var plugin = plugins[idx];
-				if(plugin.fits(query)) {
-					return plugin;
+			for(var idx = 0; idx < providers.length; idx++) {
+				var provider = providers[idx];
+				if(provider.fits(query)) {
+					return provider;
 				}
 			}
+			
+			return false;
 		}
 
 		/**
-		 * Sets the given plugin.
+		 * Sets the given provider.
 		 */
-		function setProvider(plugin) {
+		function setProvider(provider) {
 			"use strict";
 			
-			$("text").update(plugin.name);
+			$("text").update(provider.name);
 		}
 		
 		/**
@@ -88,7 +90,10 @@
 		function update() {
 			"use strict";
 
-			setPlugin(getPlugin($F("query")));
+			var provider = getProvider($F("query"));
+			if(provider !== false) {
+				setProvider(provider);
+			}
 		}
 		
 		/**
@@ -97,7 +102,7 @@
 		function submit() {
 			"use strict";
 			
-			window.location = getPlugin($F("query")).getTarget($F("query"));
+			window.location = getProvider($F("query")).getTarget($F("query"));
 		}
 
 
@@ -118,6 +123,7 @@
 		<input type="text" id="query" class="centered">
 	</form>
 	<div id="text"></div>
+	<div id="search"></div>
 	<div id="logo"></div>
 </body>
 
