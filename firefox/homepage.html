@@ -5,7 +5,7 @@
 	
 	<script type="text/javascript" src="prototype.js"></script>
 	<script type="text/javascript">
-		function Plugin(name, startsWith, target) {
+		function Provider(name, startsWith, target) {
 			"use strict";
 			
 			this.name = name;
@@ -50,11 +50,11 @@
 			}
 		}
 		
-		var plugins = new Array(
-			new Plugin("Mozilla Developer Network",
+		var providers = new Array(
+			new Provider("Mozilla Developer Network",
 				new Array("js ", "mdn "),
 				"https://developer.mozilla.org/en-US/search?q=$query"),
-			new Plugin("Google",
+			new Provider("Google",
 				new Array("", "g "),
 				"https://www.google.com/search?q=$query")
 		);
@@ -62,7 +62,7 @@
 		/**
 		 * Returns the fitting plugin.
 		 */
-		function getPlugin(query) {
+		function getProvider(query) {
 			"use strict";
 			
 			for(var idx = 0; idx < plugins.length; idx++) {
@@ -76,7 +76,7 @@
 		/**
 		 * Sets the given plugin.
 		 */
-		function setPlugin(plugin) {
+		function setProvider(plugin) {
 			"use strict";
 			
 			$("text").update(plugin.name);
