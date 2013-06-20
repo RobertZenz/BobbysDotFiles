@@ -48,3 +48,11 @@ menuitem[label="Open All in Tabs"], menuseparator[builder="end"] {
     border-right: 1px solid #babdb6 !important;
     border-radius: 0px !important;    
 }
+
+
+/*
+ * Disable the findbar animation.
+ */
+findbar {
+    transition: none !important;
+}
