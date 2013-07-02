@@ -17,6 +17,6 @@
 #!/bin/bash
 
 cal | \
-	sed -r "s/\x5f\x08([0-9])/\$\{color #$1\}\1/" | \
-	sed -r "s/\x5f\x08([0-9])/\1\$\{color\}/" | \
+	sed -r "s/\x5f\x08([0-9 ])/\$\{color #$1\}\1/" | \
+	sed -r "s/\x5f\x08([0-9 ])/\1\$\{color\}/" | \
 	sed "s/^/  /"
