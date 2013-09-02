@@ -1,7 +1,7 @@
 " Basics
 set autoindent		" Auto-Indentation
 set backspace=eol,start,indent	" Allow me to delete stuff
-set colorcolumn=80	" Right margin
+set colorcolumn=72,80,120	" Right margins
 set confirm			" Ask for confirmation instead of failing
 set encoding=utf8	" Default encoding
 set ffs=unix,mac,dos	" Default line endings
@@ -14,7 +14,7 @@ set ruler			" Display row/column
 set shiftwidth=4	" Use 4 spaces
 set sidescroll=8	" Keep 8 columns on scroll
 set smarttab		" Not sure
-set so=16			" Keep context around the lines when scrolling
+set scrolloff=16	" Keep context around the lines when scrolling
 set tabstop=4		" Use 4 spaces
 
 
